@@ -3,4 +3,7 @@ kind: ConfigMap
 metadata:
   name: pokeapi-cm
 data:
+  POKEDEX_NAME: "pinou18"
+  POKEDEX_START_NUMBER: "12"
+  POKEDEX_END_NUMBER: "123"
   

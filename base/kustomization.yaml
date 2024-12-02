@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: pokedex-kustomize
 
 resources: 
-- ./pokedex/
+- pokedex/
