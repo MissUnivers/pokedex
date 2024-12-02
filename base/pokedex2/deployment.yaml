@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokeapi-ui2
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: pokeapi-ui2
+  template:
+    metadata:
+      labels:
+        app: pokeapi-ui2
+    spec:
+      containers:
+      - image: docker.io/library/pokeapi:0.1
+        name: pokeapi
+        ports:
+        - containerPort: 3000
+        env:
+          - name: POKEDEX_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: pokeapi-cm2
+                key: POKEDEX_NAME
+          - name: POKEDEX_START_NUMBER
+            valueFrom:
+              configMapKeyRef:
+                name: pokeapi-cm2
+                key: POKEDEX_START_NUMBER
+          - name: POKEDEX_END_NUMBER
+            valueFrom:
+              configMapKeyRef:
+                name: pokeapi-cm2
+                key: POKEDEX_END_NUMBER
